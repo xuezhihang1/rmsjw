@@ -42,7 +42,7 @@ public class ProductDao {
     public int updateById(int i) {
         QueryRunner qr = new QueryRunner(C3P0Util.getCom());
 
-        String sql = "update neudeu_product set ptype = 1 where id = ?";
+        String sql = "update neudeu_product set ptype = 1,update_time=now() where id = ?";
 
         int m = 0;
         try {
@@ -51,5 +51,19 @@ public class ProductDao {
             e.printStackTrace();
         }
         return m;
+    }
+
+    public List<Product> selectByPname(String key) {
+        QueryRunner qr = new QueryRunner(C3P0Util.getCom());
+
+        String sql = "select id,pname,price,pnum,ptype,create_time,update_time from neudeu_product where pname like ?";
+
+        List<Product> query = null;
+        try {
+            query = qr.query(sql,new BeanListHandler<Product>(Product.class),key);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return query;
     }
 }

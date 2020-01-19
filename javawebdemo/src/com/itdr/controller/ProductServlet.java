@@ -36,18 +36,15 @@ public class ProductServlet extends HttpServlet {
             case "totype":
                 toType(request,response);
                 break;
-
+            case "fuzzysearch":
+                fuzzysearch(request,response);
+                break;
         }
     }
 
     //获取所有商品数据
     private void getAllProduct(HttpServletRequest request,HttpServletResponse response) throws IOException, ServletException {
         ResponseCode allProduct = productService.getAllProduct();
-
-        HttpSession session = request.getSession();
-        Users attribute = (Users)session.getAttribute("us");
-        request.setAttribute("us",attribute);
-
         request.setAttribute("plist",allProduct);
         request.getRequestDispatcher("/WEB-INF/plist.jsp").forward(request,response);
     }
@@ -57,12 +54,13 @@ public class ProductServlet extends HttpServlet {
         String id = request.getParameter("id");
         ResponseCode allProduct = productService.toType(id);
         //把数据转成json格式返回
-        response.getWriter().write(allProduct.getData().toString());
-
-        HttpSession session = request.getSession();
-        Users attribute = (Users)session.getAttribute("us");
-        request.setAttribute("us",attribute);
-
-
+        response.getWriter().write(allProduct.toString());
+    }
+    //根据商品名称模糊查询
+    private void fuzzysearch(HttpServletRequest request,HttpServletResponse response) throws IOException, ServletException {
+        String key = request.getParameter("key");
+        ResponseCode allProduct = productService.fuzzysearch(key);
+        request.setAttribute("plist",allProduct);
+        request.getRequestDispatcher("/WEB-INF/plist.jsp").forward(request,response);
     }
 }

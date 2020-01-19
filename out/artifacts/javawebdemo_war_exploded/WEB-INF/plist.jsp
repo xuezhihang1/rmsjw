@@ -33,6 +33,10 @@
     <h3><a href="/backed/product/getall">获取所有商品数据</a></h3>
 </div>
 <div id="right">
+    <form action="/backed/product/fuzzysearch">
+        <input type="text" placeholder="查询的商品名称" name="key">
+        <input type="submit" value="查询">
+    </form>
         <c:if test="${not empty plist.data}">
             <table>
                 <tr>

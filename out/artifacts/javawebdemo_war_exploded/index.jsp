@@ -11,7 +11,7 @@
     <title>管理员登录</title>
     <style>
         body {
-            background-image: url("/1.jpg");
+            background-image: url("/0.jpg");
             background-size: 100%;
             display: flex;
             justify-content: center;
@@ -42,21 +42,75 @@
             display: block;
             position: absolute;
             left: 700px;
+            top: 420px;
+            border-radius: 5px;
+            background-color: aqua;
+            border:0;
+            font-size: 15px;
+            color: blue;
+        }
+        #user{
+            display: block;
+            position: absolute;
+            justify-content: center;
+            top: 318px;
+            left: 657px;
+            border-radius: 5px;
+            border:0;
+            outline:none;
+        }
+        #up{
+            display: block;
+            position: absolute;
+            justify-content: center;
+            top: 320px;
+            left: 601px;
+            color: aquamarine;
+        }
+        #userspan{
+            display: block;
+            position: absolute;
+            top: 322px;
+            right:470px;
+        }
+        #ps{
+            display: block;
+            position: absolute;
+            justify-content: center;
+            top: 368px;
+            left: 657px;
+            border-radius: 5px;
+            border:0;
+            outline:none;
+        }
+        #psd{
+            display: block;
+            position: absolute;
+            justify-content: center;
+            top: 370px;
+            left: 601px;
+            color: aquamarine;
+        }
+        #psspan{
+            display: block;
+            position: absolute;
+            top: 370px;
+            right:480px;
         }
     </style>
 </head>
-<p id="shouye">欢迎来到王者荣耀道聚城后台管理系统</p>
+<p id="shouye">欢迎来到星河电器商城后台管理系统</p>
 <body>
 <div>
     <div>
         <div>
             <form action="/backed/user/login" method="post">
-                用户名:&nbsp;<input type="text" placeholder="账号" name="username" id="user" onfocus="show('user','请输入用户名！')"
+                <span id="up">用户名:</span><input type="text" placeholder="账号" name="username" id="user" onfocus="show('user','请输入用户名！')"
                                  onblur="check('user','用户名不能为空！')"><span id="userspan"></span><br>
-                密&nbsp;&nbsp;&nbsp;码:&nbsp;<input type="password" placeholder="密码" name="password" id="ps"
+                <span id="psd">密&nbsp;&nbsp;&nbsp;码:</span><input type="password" placeholder="密码" name="password" id="ps"
                                                   onfocus="show('ps','请输入密码！')" onblur="check('ps','密码不能为空！')"><span
                     id="psspan"></span><br>
-                <input type="submit" value="登录" id="but">
+                <input type="submit" value="登&nbsp;&nbsp;录" id="but">
             </form>
         </div>
     </div>

@@ -10,4 +10,6 @@ public interface ProductService {
     ResponseCode getAllProduct();
 
     ResponseCode toType(String id);
+
+    ResponseCode fuzzysearch(String key);
 }
